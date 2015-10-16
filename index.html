@@ -1,0 +1,125 @@
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Ruining the Fantasy</title>	
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+	<style>
+	html {
+		font-family: Roboto;
+	}
+	header {
+		text-align: center;
+		padding-top: 20px;
+	}
+	header h1 {
+		font-size: 3em;
+	}
+	section {
+		width: 900px;
+		margin: 0 auto;
+	}
+  	#chart_div {
+		width: 900px;
+		height: 500px;
+  	}
+
+	</style>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+	
+	google.load('visualization', '1', {
+		'packages': ['geochart']
+	});
+	google.setOnLoadCallback(loadData);
+
+	function loadData() {
+		var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1AC51JYdfLV3_OSJ7_2K7TY20FgJrAKUTqRBHbqECQXc/edit');
+		query.send(handleQueryResponse);
+	}
+
+	function handleQueryResponse(response) {
+		if (response.isError()) {
+			console.log('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+			return;
+		}
+		var data = response.getDataTable();
+		var view = new google.visualization.DataView(data);
+		view.setColumns([0, 1, {
+			sourceColumn: 2,
+			role: "tooltip"
+		}])
+		var options = {
+			region: "US",
+			resolution: "provinces",
+			colorAxis: {
+				minValue: 0,
+				colors: ['#DDFFDD', 'red']
+			},
+			tooltip: {
+				textStyle: {
+					fontName: 'Roboto',
+				},
+				// trigger: 'none'
+			},
+			legend: 'none'
+		};
+
+		var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
+		google.visualization.events.addListener(chart, "ready", function() {
+			google.visualization.events.addListener(chart, "select", function() {
+				var selection = chart.getSelection();
+				var state = data.getValue(selection[0].row, 0);
+				var score = data.getValue(selection[0].row, 1);
+				var text = data.getValue(selection[0].row, 3);
+				document.getElementById('state_h1').innerHTML = state;
+				document.getElementById('score_p').innerHTML = "Score: " + score;
+				if (text != null) {
+					document.getElementById('text_p').innerHTML = text;
+				} else {
+					document.getElementById('text_p').innerHTML = "";
+				}
+			});
+		});
+		chart.draw(view, options);
+	}
+
+
+    </script>
+  </head>
+  <body>
+	  <header>
+		  <h1>Ruining the Fantasy</h1>
+	  </header>
+	  <section id="chart_section">
+	    <div id="chart_div"></div>
+	    <div id="chart_metadata">
+    	<h1 id="state_h1"></h1>
+		<p id="score_p"></p>
+		<p id="text_p"></p>
+	    </div>
+	</section>
+	<section id="copy_section">
+	<p>♪♪ It ain't easy being white. It ain't easy being brown. ♪♪ It feels good to be back in a queen! Bob Loblaw Law Blog. A million [bleep]ing diamonds! Everyone's laughing, and riding, and cornholing except Buster.</p>
+
+	<p>I'm tired of trying to find happiness through lies and self-medicating. If you need me, I'll be at the bar. Am I in two thirds of a hospital room? Oh, like when they say "poofter" to mean "tourist", yes. I don't want no part of yo tight-ass country-club, ya freak bitch!</p>
+
+	<p>I made a huge tiny mistake. I was set up. By the Brits. A group of British builders operating outside the O.C. Interfere? I ought to pull down your pants and spank your ass raw. Michael: I'm sorry, have we met?</p>
+
+	<p>Let's make Ann the backup, okay? Very good way to think about her, as a backup. I never thought I'd miss a hand so much! Family Love Michael. A trick is something a whore does for money… or cocaine. Bob Loblaw Law Blog. Chicken fingers… with spicy club sauce.</p>
+
+	<p>I want to cry so bad, but I don't think I can spare the moisture. A million [bleep]ing diamonds! These are my awards, Mother. From Army. The seal is for marksmanship, and the gorilla is for sand racing. What's gotten into you? Have you been eating cheese?  Hahahahah! With spicy club sauce.</p>
+
+	<p>And although the intervention didn't work, it turned into one of the Bluth family's better parties. I don't appreciate the dry British humor. It's one banana Michael, what could it cost, ten dollars? Come on, this is a Bluth family celebration. It's no place for children.</p>
+
+	<p>Teamocil. He… she… what's the difference? Oh hear, hear. In the dark, it all looks the same. Turn this skiff around!</p>
+
+	<p>WHY was this show cancelled? I mean, COME ON. This is not me encouraging you to go here and write a review. No. Everything they do is so dramatic and flamboyant. It just makes me want to set myself on fire. No, Pop-pop does not get a treat, I just brought you a [bleep]ing pizza. You can control your bladder when you're dead! She wanted to look 48. I nearly airbrushed her into oblivion. Ended up checking "albino" on the form.</p>
+
+	<p>But where did the lighter fluid come from? Did you know that more frozen bananas are sold right here on this boardwalk than anywhere in the OC? You were just a turd out there, you know? You couldn't kick, and you couldn't run, you know? You were just a turd.</p>
+
+	<p>I guess you can say I'm buy-curious. I've used one adjective to describe myself. What is it? Bob Loblaw Lobs Law Bomb. And I wouldn't just lie there, if that's what you're thinking.  That's not what I WAS thinking. Turn this skiff around! And guess what else is back. [slow wink] My breakfast? My friskiness. Mama horny Michael. I could use a leather jacket for when I'm on my hog and have to go into a controlled slide.</p>
+	</section>
+	
+  </body>
+</html>
