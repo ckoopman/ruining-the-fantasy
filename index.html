@@ -2,27 +2,102 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Ruining the Fantasy</title>	
-	<link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+	<meta name="twitter:card" content="summary_large_image">
+	<meta property="og:title" content="Ruining the Fantasy" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://elidourado.github.io/ruining-the-fantasy/" />
+	<meta property="og:description" content="Tracking the government's war on daily fantasy sports" />
+    <title>Ruining the Fantasy</title>
+	<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Vast+Shadow|Oswald:300|Pinyon+Script|Playfair+Display:400,400italic,700,700italic|Raleway:400,700' rel='stylesheet' type='text/css'>
 	<style>
 	html {
-		font-family: Roboto;
+		color: rgba(0,0,0,.8);
 	}
-	header {
+	header, footer {
 		text-align: center;
 		padding-top: 20px;
 	}
-	header h1 {
-		font-size: 3em;
-	}
-	section {
+	section, footer, header {
 		width: 900px;
 		margin: 0 auto;
 	}
   	#chart_div {
 		width: 900px;
-		height: 500px;
+		height: 600px;
   	}
+	#copy_section {
+		width: 750px;
+		font-size: 1.2rem;
+		font-family: "Playfair Display";
+	}
+  	#chart_metadata h1 {
+		font-family: "Vast Shadow", "Arial Black";
+		text-transform: uppercase;
+		z-index:100;
+		background: white;
+		display:inline-block;
+		margin-top: -120px;
+		padding-right:10px;
+		padding-left:10px;
+		font-size:2rem;
+  	}
+  	#chart_metadata h3 {
+		font-family: "Pinyon Script";
+		z-index:100;
+		background: white;
+		display:block;
+		margin-top: -90px;
+		margin-bottom: -90px;
+		padding-bottom: -90px;
+		padding-right:10px;
+		padding-left:10px;
+  	}
+	#chart_metadata div {
+		display: block;
+		margin-top: 100px;
+		padding-right:20px;
+		padding-left:20px;
+		text-align: left;
+		font-family: "Playfair Display";
+	}
+  	#chart_metadata.nonempty {
+		width: 600px;
+		margin: 0 auto;
+		padding-top: 100px;
+		margin-top: 20px;
+		text-align: center;
+		border-style: double;
+		margin-bottom: 50px;
+  	}
+	header .vast-shadow {
+		font-family: "Vast Shadow", "Arial Black";
+		text-transform: uppercase;
+		font-size: 3rem;
+	}
+	header .oswald {
+		font-family: "Oswald", Helvetica, Arial;
+		font-size: 1.5rem;
+		letter-spacing: .05em;
+		vertical-align: 5px;
+		display: inline-block;
+	}
+	header .subhed {
+		font-family: "Raleway";
+		font-size: 1.5rem;
+	}
+	footer .vast-shadow {
+		font-family: "Vast Shadow", "Arial Black";
+		text-transform: uppercase;
+		font-size: 2rem;
+	}
+	footer .oswald {
+		font-family: "Oswald", Helvetica, Arial;
+		font-size: 1rem;
+		letter-spacing: .03em;
+		vertical-align: 3px;
+		display: inline-block;
+	}
 
 	</style>
     <script type='text/javascript' src='https://www.google.com/jsapi'></script>
@@ -58,7 +133,7 @@
 			},
 			tooltip: {
 				textStyle: {
-					fontName: 'Roboto',
+					fontName: 'Raleway',
 				},
 				// trigger: 'none'
 			},
@@ -67,35 +142,49 @@
 
 		var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
 		google.visualization.events.addListener(chart, "ready", function() {
+			var meta = document.createElement('meta');
+			meta.property = "og:image";
+			meta.content = '"' + chart.getImageURI() + '"';
+			document.getElementsByTagName('head')[0].appendChild(meta);
 			google.visualization.events.addListener(chart, "select", function() {
 				var selection = chart.getSelection();
 				var state = data.getValue(selection[0].row, 0);
-				var score = data.getValue(selection[0].row, 1);
 				var text = data.getValue(selection[0].row, 3);
-				document.getElementById('state_h1').innerHTML = state;
-				document.getElementById('score_p').innerHTML = "Score: " + score;
+				var nickname = data.getValue(selection[0].row, 4);
+				
+				var headline = document.createElement("h1");
+				var subhed = document.createElement("h3");
+				var textdiv = document.createElement("div");
+				var chart_metadata = document.createElement("div");
+				chart_metadata.id = "chart_metadata";
+				target = document.getElementById('chart_metadata');		
+				headline.innerHTML = state;
+				subhed.innerHTML = nickname;
 				if (text != null) {
-					document.getElementById('text_p').innerHTML = text;
+					textdiv.innerHTML = text;
+					chart_metadata.appendChild(headline);
+					chart_metadata.appendChild(subhed);
+					chart_metadata.appendChild(textdiv);
+					chart_metadata.className = "nonempty";
+					target.parentNode.replaceChild(chart_metadata,target);
 				} else {
-					document.getElementById('text_p').innerHTML = "";
+					target.parentNode.replaceChild(chart_metadata,target);
 				}
 			});
 		});
 		chart.draw(view, options);
 	}
-
-
     </script>
   </head>
   <body>
 	  <header>
-		  <h1>Ruining the Fantasy</h1>
+		 <span class="vast-shadow">Ruining</span> <span class="oswald">the</span> <span class="vast-shadow">Fantasy</span><br />
+		 <span class="subhed">Tracking the government's war on daily fantasy sports</span>
 	  </header>
 	  <section id="chart_section">
 	    <div id="chart_div"></div>
 	    <div id="chart_metadata">
     	<h1 id="state_h1"></h1>
-		<p id="score_p"></p>
 		<p id="text_p"></p>
 	    </div>
 	</section>
@@ -120,6 +209,10 @@
 
 	<p>I guess you can say I'm buy-curious. I've used one adjective to describe myself. What is it? Bob Loblaw Lobs Law Bomb. And I wouldn't just lie there, if that's what you're thinking.  That's not what I WAS thinking. Turn this skiff around! And guess what else is back. [slow wink] My breakfast? My friskiness. Mama horny Michael. I could use a leather jacket for when I'm on my hog and have to go into a controlled slide.</p>
 	</section>
-	
+	<footer id="footer">
+		<p><span class="vast-shadow">Made</span> <span class="oswald">with</span> <span class="vast-shadow">care</span> <span class="oswald">by</span></p>
+		<p><a href="https://twitter.com/elidourado" class="twitter-follow-button" data-show-count="false" data-size="large">@elidourado</a></p> <p><span class="oswald">and</span></p> <p><a href="https://twitter.com/ckoopman" class="twitter-follow-button" data-show-count="false" data-size="large">@ckoopman</a></p>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	</footer>
   </body>
 </html>
