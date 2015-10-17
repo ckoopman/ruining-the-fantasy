@@ -9,7 +9,7 @@
 	<meta property="og:description" content="Tracking the government's war on daily fantasy sports" />
     <title>Ruining the Fantasy</title>
 	<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Vast+Shadow|Oswald:300|Pinyon+Script|Playfair+Display:400,400italic,700,700italic|Raleway:400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Vast+Shadow|Oswald:300|Pinyon+Script' rel='stylesheet' type='text/css'>
 	<style>
 	html {
 		color: rgba(0,0,0,.8);
@@ -29,43 +29,44 @@
 	#copy_section {
 		width: 750px;
 		font-size: 1.2rem;
-		font-family: "Playfair Display";
+		font-family: "Georgia", serif;
 	}
   	#chart_metadata h1 {
+		position:relative;
+		display: inline-block;
 		font-family: "Vast Shadow", "Arial Black";
 		text-transform: uppercase;
 		z-index:100;
 		background: white;
-		display:inline-block;
-		margin-top: -120px;
+		top: -50px;
 		padding-right:10px;
 		padding-left:10px;
+		margin-bottom: 0px;
 		font-size:2rem;
   	}
   	#chart_metadata h3 {
+		position:relative;
 		font-family: "Pinyon Script";
 		z-index:100;
-		background: white;
 		display:block;
-		margin-top: -90px;
-		margin-bottom: -90px;
-		padding-bottom: -90px;
+		top: -60px;
+		padding-top: 0px;
+		margin-top:0px;
 		padding-right:10px;
 		padding-left:10px;
   	}
 	#chart_metadata div {
+		position: relative;
+		top: -50px;
 		display: block;
-		margin-top: 100px;
 		padding-right:20px;
 		padding-left:20px;
 		text-align: left;
-		font-family: "Playfair Display";
+		font-family: "Georgia", serif;
 	}
   	#chart_metadata.nonempty {
 		width: 600px;
 		margin: 0 auto;
-		padding-top: 100px;
-		margin-top: 20px;
 		text-align: center;
 		border-style: double;
 		margin-bottom: 50px;
@@ -83,7 +84,7 @@
 		display: inline-block;
 	}
 	header .subhed {
-		font-family: "Raleway";
+		font-family: Tahoma, sans-serif;
 		font-size: 1.5rem;
 	}
 	footer .vast-shadow {
@@ -133,7 +134,7 @@
 			},
 			tooltip: {
 				textStyle: {
-					fontName: 'Raleway',
+					fontName: "Tahoma, sans-serif"
 				},
 				// trigger: 'none'
 			},
