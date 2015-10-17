@@ -21,55 +21,55 @@
 		width: 900px;
 		margin: 0 auto;
 	}
-  	#chart_div {
+	#chart_div {
 		width: 900px;
 		height: 600px;
-  	}
+	}
 	#copy_section {
 		width: 750px;
 		font-size: 1.2rem;
 		font-family: "Georgia", serif;
 	}
-  	#chart_metadata h1 {
-		position:relative;
+	#chart_metadata h1 {
+		position: relative;
 		display: inline-block;
 		font-family: "Vast Shadow", "Arial Black";
 		text-transform: uppercase;
-		z-index:100;
+		z-index: 100;
 		background: white;
 		top: -50px;
-		padding-right:10px;
-		padding-left:10px;
+		padding-right: 10px;
+		padding-left: 10px;
 		margin-bottom: 0px;
-		font-size:2rem;
-  	}
-  	#chart_metadata h3 {
-		position:relative;
+		font-size: 2rem;
+	}
+	#chart_metadata h3 {
+		position: relative;
 		font-family: "Pinyon Script";
-		z-index:100;
-		display:block;
+		z-index: 100;
+		display: block;
 		top: -60px;
 		padding-top: 0px;
-		margin-top:0px;
-		padding-right:10px;
-		padding-left:10px;
-  	}
+		margin-top: 0px;
+		padding-right: 10px;
+		padding-left: 10px;
+	}
 	#chart_metadata div {
 		position: relative;
 		top: -50px;
 		display: block;
-		padding-right:20px;
-		padding-left:20px;
+		padding-right: 20px;
+		padding-left: 20px;
 		text-align: left;
 		font-family: "Georgia", serif;
 	}
-  	#chart_metadata.nonempty {
+	#chart_metadata.nonempty {
 		width: 600px;
 		margin: 0 auto;
 		text-align: center;
 		border-style: double;
 		margin-bottom: 50px;
-  	}
+	}
 	header .vast-shadow {
 		font-family: "Vast Shadow", "Arial Black";
 		text-transform: uppercase;
@@ -98,11 +98,9 @@
 		vertical-align: 3px;
 		display: inline-block;
 	}
-
 	</style>
     <script type='text/javascript' src='https://www.google.com/jsapi'></script>
     <script type='text/javascript'>
-	
 	google.load('visualization', '1', {
 		'packages': ['geochart']
 	});
@@ -151,13 +149,13 @@
 				var state = data.getValue(selection[0].row, 0);
 				var text = data.getValue(selection[0].row, 3);
 				var nickname = data.getValue(selection[0].row, 4);
-				
+
 				var headline = document.createElement("h1");
 				var subhed = document.createElement("h3");
 				var textdiv = document.createElement("div");
 				var chart_metadata = document.createElement("div");
 				chart_metadata.id = "chart_metadata";
-				target = document.getElementById('chart_metadata');		
+				target = document.getElementById('chart_metadata');
 				headline.innerHTML = state;
 				subhed.innerHTML = nickname;
 				if (text != null) {
@@ -166,9 +164,9 @@
 					chart_metadata.appendChild(subhed);
 					chart_metadata.appendChild(textdiv);
 					chart_metadata.className = "nonempty";
-					target.parentNode.replaceChild(chart_metadata,target);
+					target.parentNode.replaceChild(chart_metadata, target);
 				} else {
-					target.parentNode.replaceChild(chart_metadata,target);
+					target.parentNode.replaceChild(chart_metadata, target);
 				}
 			});
 		});
@@ -183,10 +181,7 @@
 	  </header>
 	  <section id="chart_section">
 	    <div id="chart_div"></div>
-	    <div id="chart_metadata">
-    	<h1 id="state_h1"></h1>
-		<p id="text_p"></p>
-	    </div>
+	    <div id="chart_metadata"></div>
 	</section>
 	<section id="copy_section">
 	<p>♪♪ It ain't easy being white. It ain't easy being brown. ♪♪ It feels good to be back in a queen! Bob Loblaw Law Blog. A million [bleep]ing diamonds! Everyone's laughing, and riding, and cornholing except Buster.</p>
