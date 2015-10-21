@@ -98,9 +98,33 @@
 		vertical-align: 3px;
 		display: inline-block;
 	}
+	#overlay {
+	     visibility: hidden;
+	     position: fixed;
+	     left: 0px;
+	     top: 0px;
+	     width:100%;
+	     height:100%;
+	     text-align:center;
+	     z-index: 1000;
+	}
+	#overlay div {
+	     width:600px;
+	     margin: 100px auto;
+	     background-color: #fff;
+	     border:1px solid #888;
+	     padding:15px;
+	}
+	#overlay #close_link {
+/*		display:block;
+		position:relative;
+		top: 0;
+		right: 0;
+*/	}
 	</style>
     <script type='text/javascript' src='https://www.google.com/jsapi'></script>
     <script type='text/javascript'>
+	
 	google.load('visualization', '1', {
 		'packages': ['geochart']
 	});
@@ -175,6 +199,7 @@
     </script>
   </head>
   <body>
+	  <div id="everything">
 	  <header>
 		 <span class="vast-shadow">Ruining</span> <span class="oswald">the</span> <span class="vast-shadow">Fantasy</span><br />
 		 <span class="subhed">Tracking the government's war on daily fantasy sports</span>
@@ -184,30 +209,58 @@
 	    <div id="chart_metadata"></div>
 	</section>
 	<section id="copy_section">
-	<p>♪♪ It ain't easy being white. It ain't easy being brown. ♪♪ It feels good to be back in a queen! Bob Loblaw Law Blog. A million [bleep]ing diamonds! Everyone's laughing, and riding, and cornholing except Buster.</p>
-
-	<p>I'm tired of trying to find happiness through lies and self-medicating. If you need me, I'll be at the bar. Am I in two thirds of a hospital room? Oh, like when they say "poofter" to mean "tourist", yes. I don't want no part of yo tight-ass country-club, ya freak bitch!</p>
-
-	<p>I made a huge tiny mistake. I was set up. By the Brits. A group of British builders operating outside the O.C. Interfere? I ought to pull down your pants and spank your ass raw. Michael: I'm sorry, have we met?</p>
-
-	<p>Let's make Ann the backup, okay? Very good way to think about her, as a backup. I never thought I'd miss a hand so much! Family Love Michael. A trick is something a whore does for money… or cocaine. Bob Loblaw Law Blog. Chicken fingers… with spicy club sauce.</p>
-
-	<p>I want to cry so bad, but I don't think I can spare the moisture. A million [bleep]ing diamonds! These are my awards, Mother. From Army. The seal is for marksmanship, and the gorilla is for sand racing. What's gotten into you? Have you been eating cheese?  Hahahahah! With spicy club sauce.</p>
-
-	<p>And although the intervention didn't work, it turned into one of the Bluth family's better parties. I don't appreciate the dry British humor. It's one banana Michael, what could it cost, ten dollars? Come on, this is a Bluth family celebration. It's no place for children.</p>
-
-	<p>Teamocil. He… she… what's the difference? Oh hear, hear. In the dark, it all looks the same. Turn this skiff around!</p>
-
-	<p>WHY was this show cancelled? I mean, COME ON. This is not me encouraging you to go here and write a review. No. Everything they do is so dramatic and flamboyant. It just makes me want to set myself on fire. No, Pop-pop does not get a treat, I just brought you a [bleep]ing pizza. You can control your bladder when you're dead! She wanted to look 48. I nearly airbrushed her into oblivion. Ended up checking "albino" on the form.</p>
-
-	<p>But where did the lighter fluid come from? Did you know that more frozen bananas are sold right here on this boardwalk than anywhere in the OC? You were just a turd out there, you know? You couldn't kick, and you couldn't run, you know? You were just a turd.</p>
-
-	<p>I guess you can say I'm buy-curious. I've used one adjective to describe myself. What is it? Bob Loblaw Lobs Law Bomb. And I wouldn't just lie there, if that's what you're thinking.  That's not what I WAS thinking. Turn this skiff around! And guess what else is back. [slow wink] My breakfast? My friskiness. Mama horny Michael. I could use a leather jacket for when I'm on my hog and have to go into a controlled slide.</p>
+	<p>Currently, 45 states allow people to play daily fantasy sports. However, as the daily fantasy sports industry has come under increased scrutiny, many states are beginning to take aim. Our goal is to track state governments as they begin to take action.</p>
+	<p>On this site, we have created a comprehensive source to record in real time where each state stands on daily fantasy sports. Our interactive map will capture activity in each state, and provide some measure of each state’s attitude toward these platforms. This will include: (a) legislative efforts, (b) regulatory actions, (c) investigations, and (d) public statements made by state officials. These four pieces will provide an overall picture of a state’s willingness to accept daily fantasy sports.</p>
+	<p>Since much of this is still unfolding, we will continue to update our map as soon as news is available on what is happening in each state. To succeed in keeping this as up to date as possible, we <a href="javascript:overlay()">welcome your contributions</a>.</p>
 	</section>
 	<footer id="footer">
 		<p><span class="vast-shadow">Made</span> <span class="oswald">with</span> <span class="vast-shadow">care</span> <span class="oswald">by</span></p>
-		<p><a href="https://twitter.com/elidourado" class="twitter-follow-button" data-show-count="false" data-size="large">@elidourado</a></p> <p><span class="oswald">and</span></p> <p><a href="https://twitter.com/ckoopman" class="twitter-follow-button" data-show-count="false" data-size="large">@ckoopman</a></p>
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		<p><a href="https://twitter.com/elidourado" class="twitter-follow-button" data-show-count="false" data-size="large">@elidourado</a></p> <p><span class="oswald">and</span></p> <p><a href="https://twitter.com/ckoopman" class="twitter-follow-button" data-show-count="false" data-size="large">@ckoopman</a></p>	
 	</footer>
+	<div id="overlay">
+		<div id="wufoo-zcoma930jj2267">
+		Fill out our <a href="https://elidourado.wufoo.com/forms/zcoma930jj2267">online form</a>.
+		</div>	
+	</div>
+</div> <!-- everything -->
+	<script>
+function overlay() {
+	el = document.getElementById("overlay");
+	el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+}
+
+document.getElementById('overlay').onclick = function(e) {
+    if(e.target != document.getElementById('wufoo-zcoma930jj2267')) {
+		overlay();
+    }
+}
+
+
+// document.getElementById("everything").onclick = function(e) {
+// 	el = document.getElementById("overlay");
+//     if(e.target != el) {
+// 		//console.log('click outside');
+//         el.style.visibility = "hidden";
+//     }
+// }
+
+
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	<script type="text/javascript">var zcoma930jj2267;(function(d, t) {
+	var s = d.createElement(t), options = {
+	'userName':'elidourado',
+	'formHash':'zcoma930jj2267',
+	'autoResize':true,
+	'height':'497',
+	'async':true,
+	'host':'wufoo.com',
+	'header':'show',
+	'ssl':true};
+	s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+	s.onload = s.onreadystatechange = function() {
+	var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+	try { zcoma930jj2267 = new WufooForm();zcoma930jj2267.initialize(options);zcoma930jj2267.display(); } catch (e) {}};
+	var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+	})(document, 'script');</script>
   </body>
 </html>
