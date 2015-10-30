@@ -143,6 +143,10 @@
 		query.send(handleQueryResponse);
 	}
 
+	function createToolTipHTML(table, row) {
+		return '<span>' + table.getValue(row,2) + '</span><br/><br /><span style="float:right; font-style:italic; color:#ccc; font-size:x-small;">Last Updated: ' + table.getValue(row,4).toDateString() + '</span><br />';
+	}
+
 	function handleQueryResponse(response) {
 		if (response.isError()) {
 			console.log('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
@@ -151,8 +155,13 @@
 		var data = response.getDataTable();
 		var view = new google.visualization.DataView(data);
 		view.setColumns([0, 1, {
-			sourceColumn: 2,
-			role: "tooltip"
+			// sourceColumn: 2,
+			calc: createToolTipHTML,
+			type: "string",
+			role: "tooltip",
+			properties: {
+			        html: true
+			    },
 		}])
 		var options = {
 			region: "US",
@@ -165,7 +174,7 @@
 				textStyle: {
 					fontName: "Tahoma, sans-serif"
 				},
-				// trigger: 'none'
+				isHtml: true,
 			},
 			legend: 'none'
 		};
@@ -180,7 +189,7 @@
 				var selection = chart.getSelection();
 				var state = data.getValue(selection[0].row, 0);
 				var text = data.getValue(selection[0].row, 3);
-				var nickname = data.getValue(selection[0].row, 4);
+				var nickname = data.getValue(selection[0].row, 5);
 
 				var headline = document.createElement("h1");
 				var subhed = document.createElement("h3");
