@@ -238,7 +238,7 @@
 	<p>Currently, 43 states allow people to play daily fantasy sports. As public scrutiny on the daily fantasy sports industry increases, many states are beginning to take aim at an industry that has flourished without significant regulatory intervention. Our goal is to track state governments as they begin to respond to the growth of fantasy sports.</p>
 	<p>This site is a comprehensive source to record in real time where each state stands on daily fantasy sports. Our interactive map will capture activity in each state and provide some measure of each state’s attitude toward these platforms. This coverage will include: (a) legislative efforts, (b) regulatory actions, (c) investigations, and (d) public statements made by state officials. These four pieces will provide an overall picture of a state’s willingness to accept daily fantasy sports.</p>
 	<p class="q">Send us tips!</p>
-	<p>Much of this is still unfolding. We will continue to update our map as soon as news is available on what is happening in each state. To keep the site as up to date as possible, <a href="javascript:overlay()">share the latest info from your state</a>.</p>
+	<p>Much of this is still unfolding. We will continue to update our map as soon as news is available on what is happening in each state. To keep the site as up to date as possible, <a href="#" id="overlay-link" onclick="overlay()">share the latest info from your state</a>.</p>
 	<p class="q">But what exactly is daily fantasy sports?</p>
 	<p>Traditional fantasy sports games have existed for decades. In the traditional format, participants assemble “fantasy” teams made of real professional players in a particular sport. These teams then compete across an entire season based on the real statistical performances of the players they have assembled. The better a participant’s players perform in real games, the better the fantasy team performs.</p>
 	<p>Daily fantasy sports works exactly the same way. However, instead of assembling a team for an entire season, participants create teams for a much shorter period. Sometimes, these games play for a single day or a single game. Participants earn points based on performance of the players they select. In the end, the team that has the highest-performing players wins.</p>
@@ -262,43 +262,79 @@
 		Fill out our <a href="https://elidourado.wufoo.com/forms/zcoma930jj2267">online form</a>.
 		</div>	
 	</div>
-	<script>
-function overlay() {
-	el = document.getElementById("overlay");
-	el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
-}
-document.getElementById('overlay').onclick = function(e) {
-    if(e.target != document.getElementById('wufoo-zcoma930jj2267')) {
-		overlay();
-    }
-}
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-	<script type="text/javascript">var zcoma930jj2267;(function(d, t) {
-	var s = d.createElement(t), options = {
-	'userName':'elidourado',
-	'formHash':'zcoma930jj2267',
-	'autoResize':true,
-	'height':'497',
-	'async':true,
-	'host':'wufoo.com',
-	'header':'show',
-	'ssl':true};
-	s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
-	s.onload = s.onreadystatechange = function() {
-	var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
-	try { zcoma930jj2267 = new WufooForm();zcoma930jj2267.initialize(options);zcoma930jj2267.display(); } catch (e) {}};
-	var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
-	})(document, 'script');</script>
+	<script type='text/javascript'>
+	function stopDefAction(evt) {
+		evt.preventDefault();
+	}
+	document.getElementById('overlay-link').addEventListener(
+		'click', stopDefAction, false
+	);
+
+
+	function overlay() {
+		el = document.getElementById("overlay");
+		el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+	}
+	document.getElementById('overlay').onclick = function(e) {
+		if (e.target != document.getElementById('wufoo-zcoma930jj2267')) {
+			overlay();
+		}
+	} 
 	
-	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	!function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0],
+			p = /^http:/.test(d.location) ? 'http' : 'https';
+		if (!d.getElementById(id)) {
+			js = d.createElement(s);
+			js.id = id;
+			js.src = p + '://platform.twitter.com/widgets.js';
+			fjs.parentNode.insertBefore(js, fjs);
+		}
+	}(document, 'script', 'twitter-wjs');
 
-	  ga('create', 'UA-7700727-11', 'auto');
-	  ga('send', 'pageview');
+	var zcoma930jj2267;
+	(function(d, t) {
+		var s = d.createElement(t),
+			options = {
+				'userName': 'elidourado',
+				'formHash': 'zcoma930jj2267',
+				'autoResize': true,
+				'height': '497',
+				'async': true,
+				'host': 'wufoo.com',
+				'header': 'show',
+				'ssl': true
+			};
+		s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+		s.onload = s.onreadystatechange = function() {
+			var rs = this.readyState;
+			if (rs)
+				if (rs != 'complete')
+					if (rs != 'loaded') return;
+			try {
+				zcoma930jj2267 = new WufooForm();
+				zcoma930jj2267.initialize(options);
+				zcoma930jj2267.display();
+			} catch (e) {}
+		};
+		var scr = d.getElementsByTagName(t)[0],
+			par = scr.parentNode;
+		par.insertBefore(s, scr);
+	})(document, 'script');
 
+	(function(i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function() {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+		m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+	ga('create', 'UA-7700727-11', 'auto');
+	ga('send', 'pageview');
 	</script>
   </body>
 </html>
